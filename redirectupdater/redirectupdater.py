@@ -91,10 +91,13 @@ class redirectUpdater(object):
 			
 	def check_if_update_needed(self, beta=False):
 		"""Checks if redirects needs updating"""
-		if beta:
-			if self.betaPageText.split("[[")[1].partition("]]")[0].rstrip("Patch (Beta)") != self.betaPatch:    return True
-		else:
-			if self.pageText.split("[[")[1].partition("]]")[0].rstrip(" Patch") != self.patch:    return True
+		try:
+			if beta:
+				if self.betaPageText.split("[[")[1].partition("]]")[0].rstrip("Patch (Beta)") != self.betaPatch:    return True
+			else:
+				if self.pageText.split("[[")[1].partition("]]")[0].rstrip(" Patch") != self.patch:    return True
+		except IndexError:
+			return True # Just update anyway
 			
 	def update(self, beta=False):
 		"""Updates the redirects and their lang pages"""
