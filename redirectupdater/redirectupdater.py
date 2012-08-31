@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import wikitools, sys, calendar
 from hashlib import md5
+from time import sleep
 
 '''
 Redirect Updater Class
@@ -13,9 +14,10 @@ class redirectUpdaterError(Exception):
 	pass
 		
 class redirectUpdater(object):
-	def __init__(self, wiki, updateTemplateName="Template:Updates", pageName="Lastpatch", betaPageName="Lastpatchbeta", user=False, password=False, verbosity=False):
+	def __init__(self, wiki, updateTemplateName="Template:Updates", pageName="Lastpatch", betaPageName="Lastpatchbeta", user=False, password=False, rate=False, verbosity=False):
 		self.user = user
 		self.password = password
+		self.rate = rate
 		self.wiki = wikitools.wiki.Wiki(wiki)
 		self.verbosity = verbosity
 		self.pageName = pageName
@@ -86,6 +88,7 @@ class redirectUpdater(object):
 		try:
 			_pagetoedit.edit(bot=True, minor=True, text="%s\n%s" % (self.redirect_string, self.footer), summary=self.summary_string, md5=self._md5sum(self.redirect_string), token=page.getToken("edit"))
 			if self.verbosity:    print("Updated: %s") % (_print_string);
+			sleep(self.rate)
 		except:
 				print("Warning: Couldn't edit %s") % (_print_string)
 			
