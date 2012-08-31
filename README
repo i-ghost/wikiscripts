@@ -1,0 +1,16 @@
+wikiscripts
+-------------------------
+
+A collection of scripts usable on MediaWiki installations.
+
+Contents:
+-------------------------
+
+<dl>
+  <dt>redirectupdater</dt>
+  <dd>A module used to update the Lastpatch and Lastpatchbeta pages on the Official Team Fortress Wiki.</dd>
+Should be extendable to work on other Wikis with a similar setup.
+See redirectupdater_example.py for example usage.
+  <dt>wikiConf.py</dt>
+  <dd>Contains a dictionary of dictionaries describing Wikis to use with these scripts.</dd>
+</dl>
