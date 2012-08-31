@@ -63,7 +63,7 @@ class redirectUpdater(object):
 			self.summary_string = "Updated [[%s]] redirect to [[%s Patch]]" % (self.pageName, self.patch)
 		
 	def _update_redirect(self, page, beta=False, lang=False):
-		"""Internal: Provides editing funcitonality"""
+		"""Internal: Provides editing functionality"""
 		self.make_edit_strings(beta, lang)
 		# Use the correct page
 		if beta:

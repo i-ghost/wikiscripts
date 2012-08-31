@@ -15,3 +15,7 @@ redirectupdater
 wikiConf.py
 -------------------------
 * Contains a dictionary of dictionaries describing Wikis to use with these scripts.
+
+Requires python-wikitools (http://code.google.com/p/python-wikitools/)
+
+Tested on Python 2.6
