@@ -62,7 +62,7 @@ class redirectUpdater(object):
 			self.redirect_string = "#REDIRECT [[%s Patch]]" % (self.patch)
 			self.summary_string = "Updated [[%s]] redirect to [[%s Patch]]" % (self.pageName, self.patch)
 		
-	def _update_redirect(self, page, beta=False, lang=False):
+	def _update_redirect(self, beta=False, lang=False):
 		"""Internal: Provides editing functionality"""
 		self.make_edit_strings(beta, lang)
 		# Use the correct page
@@ -86,7 +86,7 @@ class redirectUpdater(object):
 				else:    _print_string = "%s" % (self.pageName);
 		# Send the edit
 		try:
-			_pagetoedit.edit(bot=True, minor=True, text="%s\n%s" % (self.redirect_string, self.footer), summary=self.summary_string, md5=self._md5sum(self.redirect_string), token=page.getToken("edit"))
+			_pagetoedit.edit(bot=True, minor=True, text="%s\n%s" % (self.redirect_string, self.footer), summary=self.summary_string, md5=self._md5sum(self.redirect_string), token=_pagetoedit.getToken("edit"))
 			if self.verbosity:    print("Updated: %s") % (_print_string);
 			sleep(self.rate)
 		except:
@@ -105,13 +105,13 @@ class redirectUpdater(object):
 	def update(self, beta=False):
 		"""Updates the redirects and their lang pages"""
 		if beta:
-			self._update_redirect(self.betaPage, beta=True)
+			self._update_redirect(beta=True)
 			for lang in self.langs:
-				self._update_redirect(self.betaPage, beta=True, lang=lang)
+				self._update_redirect(beta=True, lang=lang)
 		else:
-			self._update_redirect(self.page)
+			self._update_redirect()
 			for lang in self.langs:
-				self._update_redirect(self.page, lang=lang)
+				self._update_redirect(lang=lang)
 			
 			
 	def run(self):
