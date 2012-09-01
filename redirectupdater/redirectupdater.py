@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import wikitools, sys, calendar
+import wikitools, calendar
 from hashlib import md5
 from time import sleep
 
