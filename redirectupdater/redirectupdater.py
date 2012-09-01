@@ -90,7 +90,7 @@ class redirectUpdater(object):
 			if self.verbosity:    print("Updated: %s") % (_print_string);
 			sleep(self.rate)
 		except:
-				print("Warning: Couldn't edit %s") % (_print_string)
+			print("Warning: Couldn't edit %s") % (_print_string)
 			
 	def check_if_update_needed(self, beta=False):
 		"""Checks if redirects needs updating"""
